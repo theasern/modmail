@@ -154,9 +154,9 @@ class Modmail(commands.Bot):
     def help_embed(self, prefix):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
-                         'saves no data and utilises channel topics for storage and syncing.' 
+        em.description = 'Este bot es una recreacion del popular bot MailMod. ' \
+                         'Hecho por Inventable en python. Este bot ' \
+                         'no guarda ningun dato y usa los canales para almacenamiento.' 
                  
 
         cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
