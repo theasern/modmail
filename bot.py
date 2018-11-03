@@ -205,10 +205,10 @@ class Modmail(commands.Bot):
                     if 'User ID:' in str(chan.topic):
                         user_id = int(chan.topic.split(': ')[1])
                         user = self.get_user(user_id)
-                        await user.send(f'**{ctx.author}** has closed this modmail session.')
+                        await user.send(f'**{ctx.author}** ha cerrado este ticket de modmail.')
                     await chan.delete()
         await categ.delete()
-        await ctx.send('Disabled modmail.')
+        await ctx.send('Modmail desactivado.')
 
 
     @commands.command(name='close')
@@ -216,11 +216,11 @@ class Modmail(commands.Bot):
     async def _close(self, ctx):
         '''Close the current thread.'''
         if 'User ID:' not in str(ctx.channel.topic):
-            return await ctx.send('This is not a modmail thread.')
+            return await ctx.send('Este no es un canal de modmail.')
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
         em = discord.Embed(title='Thread Closed')
-        em.description = f'**{ctx.author}** has closed this modmail session.'
+        em.description = f'**{ctx.author}** ha cerrado este ticket de modmail.'
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
@@ -264,19 +264,19 @@ class Modmail(commands.Bot):
 
         em = discord.Embed(colour=color, description=desc, timestamp=time)
 
-        em.add_field(name='Account Created', value=str((time - user.created_at).days)+' days ago.')
+        em.add_field(name='Cuenta creada hace', value=str((time - user.created_at).days)+' días.')
         em.set_footer(text='User ID: '+str(user.id))
         em.set_thumbnail(url=avi)
         em.set_author(name=user, icon_url=server.icon_url)
       
 
         if member:
-            em.add_field(name='Joined', value=str((time - member.joined_at).days)+' days ago.')
-            em.add_field(name='Member No.',value=str(member_number),inline = True)
+            em.add_field(name='Se ha unido hace', value=str((time - member.joined_at).days)+' días.')
+            em.add_field(name='Miembro Numero',value=str(member_number),inline = True)
             em.add_field(name='Nick', value=member.nick, inline=True)
             em.add_field(name='Roles', value=rolenames, inline=True)
         
-        em.add_field(name='Message', value=message.content, inline=False)
+        em.add_field(name='Mensaje', value=message.content, inline=False)
 
         return em
 
@@ -334,8 +334,8 @@ class Modmail(commands.Bot):
 
     @property
     def blocked_em(self):
-        em = discord.Embed(title='Message not sent!', color=discord.Color.red())
-        em.description = 'You have been blocked from using modmail.'
+        em = discord.Embed(title='Mensaje no enviado!', color=discord.Color.red())
+        em.description = 'Se te ha bloqueado a la hora de usar modmail.'
         return em
 
     async def process_modmail(self, message):
@@ -396,7 +396,7 @@ class Modmail(commands.Bot):
         if message == 'clear':
             return await self.change_presence(activity=None)
         await self.change_presence(activity=discord.Game(message))
-        await ctx.send(f"Changed status to **{message}**")
+        await ctx.send(f"Estado cambiado a **{message}**")
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
@@ -415,9 +415,9 @@ class Modmail(commands.Bot):
 
         if id not in top_chan.topic:  
             await top_chan.edit(topic=topic)
-            await ctx.send('User successfully blocked!')
+            await ctx.send('Usuario bloqueado!')
         else:
-            await ctx.send('User is already blocked.')
+            await ctx.send('Este usuario ha esta bloqueado.')
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
@@ -436,9 +436,9 @@ class Modmail(commands.Bot):
 
         if id in top_chan.topic:
             await top_chan.edit(topic=topic)
-            await ctx.send('User successfully unblocked!')
+            await ctx.send('Usuario desbloqueado!')
         else:
-            await ctx.send('User is not already blocked.')
+            await ctx.send('Usuario no bloqueado')
 
     @commands.command(hidden=True, name='eval')
     async def _eval(self, ctx, *, body: str):
