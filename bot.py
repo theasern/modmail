@@ -155,7 +155,7 @@ class Modmail(commands.Bot):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
         em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
+                         'Made by Inventable and improved by the suggestions of others. This bot ' \
                          'saves no data and utilises channel topics for storage and syncing.' 
                  
 
@@ -171,8 +171,6 @@ class Modmail(commands.Bot):
                'Modifying the channel topic will also break the system.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
-        em.add_field(name='Github', value='https://github.com/verixx/modmail')
-        em.set_footer(text='Star the repository to unlock hidden features!')
 
         return em
 
