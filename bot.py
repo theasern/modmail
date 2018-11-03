@@ -171,8 +171,6 @@ class Modmail(commands.Bot):
                'Modifying the channel topic will also break the system.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
-        em.add_field(name='Github', value='https://github.com/verixx/modmail')
-        em.set_footer(text='Star the repository to unlock hidden features!')
 
         return em
 
@@ -359,8 +357,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Thanks for the message!')
-        em.description = 'The moderation team will get back to you as soon as possible!'
+        em = discord.Embed(title='Gracias por el mensaje!!')
+        em.description = 'El equipo de soporte te responderá lo antes posible!'
         em.color = discord.Color.green()
 
         if channel is not None:
@@ -372,7 +370,7 @@ class Modmail(commands.Bot):
                 category=categ
                 )
             await channel.edit(topic=topic)
-            await channel.send('@here', embed=self.format_info(message))
+            await channel.send('@><STAFF><', embed=self.format_info(message))
 
     async def on_message(self, message):
         if message.author.bot:
