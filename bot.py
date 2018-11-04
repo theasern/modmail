@@ -169,8 +169,8 @@ class Modmail(commands.Bot):
 
         warn = 'No elimines manualmente los canales o categorias o romperas el sistema. ' \
                'Modificar el tema del canal también romperá el sistema.'
-        em.add_field(name='Commands', value=cmds)
-        em.add_field(name='Warning', value=warn)
+        em.add_field(name='Comandos', value=cmds)
+        em.add_field(name='Advertencia!', value=warn)
 
         return em
 
