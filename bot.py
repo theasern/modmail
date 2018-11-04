@@ -156,19 +156,19 @@ class Modmail(commands.Bot):
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
         em.description = 'Este bot es una recreacion del popular bot MailMod. ' \
                          'Hecho por Inventable en python. Este bot ' \
-                         'no guarda ningun dato y usa los canales para almacenamiento.' 
+                         'no guarda ningun dato y usa los canales para su almacenamiento.' 
                  
 
-        cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
-               f'`{prefix}reply <message...>` - Sends a message to the current thread\'s recipient.\n' \
-               f'`{prefix}close` - Closes the current thread and deletes the channel.\n' \
-               f'`{prefix}disable` - Closes all threads and disables modmail for the server.\n' \
-               f'`{prefix}customstatus` - Sets the Bot status to whatever you want.' \
-               f'`{prefix}block` - Blocks a user from using modmail!' \
-               f'`{prefix}unblock` - Unblocks a user from using modmail!'
+        cmds = f'`{prefix}setup [modrole] <- (optional)` - Comando que configura el bot.\n' \
+               f'`{prefix}reply <message...>` - Envia un mensaje de respuesta a la persona' \
+               f'`{prefix}close` - Cierra el ticket y elimina el canal.\n' \
+               f'`{prefix}disable` - Cierra todos los tickets y desactiva el bot del servidor.\n' \
+               f'`{prefix}customstatus` - Pon el estado del bot como quieras.' \
+               f'`{prefix}block` - Bloquea a alguien para usar ModMail!' \
+               f'`{prefix}unblock` - Desbloquea a alguien para usar ModMail!'
 
-        warn = 'Do not manually delete the category or channels as it will break the system. ' \
-               'Modifying the channel topic will also break the system.'
+        warn = 'No elimines manualmente los canales o categorias o romperas el sistema. ' \
+               'Modificar el tema del canal también romperá el sistema.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
 
@@ -190,7 +190,7 @@ class Modmail(commands.Bot):
         await c.edit(topic='Manually add user id\'s to block users.\n\n'
                            'Blocked\n-------\n\n')
         await c.send(embed=self.help_embed(ctx.prefix))
-        await ctx.send('Successfully set up server.')
+        await ctx.send('Server configurado con éxito.')
 
     @commands.command()
     @commands.has_permissions(administrator=True)
@@ -251,7 +251,7 @@ class Modmail(commands.Bot):
         member = self.guild.get_member(user.id)
         avi = user.avatar_url
         time = datetime.datetime.utcnow()
-        desc = 'Modmail thread started.'
+        desc = 'Ticket de ModMail abierto.'
         color = 0
 
         if member:
