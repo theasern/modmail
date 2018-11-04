@@ -219,7 +219,7 @@ class Modmail(commands.Bot):
             return await ctx.send('Este no es un canal de modmail.')
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
-        em = discord.Embed(title='Thread Closed')
+        em = discord.Embed(title='Ticket Cerrado')
         em.description = f'**{ctx.author}** ha cerrado este ticket de modmail.'
         em.color = discord.Color.red()
         try:
@@ -298,11 +298,11 @@ class Modmail(commands.Bot):
         if mod:
             fmt.color=discord.Color.green()
             fmt.set_author(name=str(author), icon_url=author.avatar_url)
-            fmt.set_footer(text='Moderator')
+            fmt.set_footer(text='Moderador')
         else:
             fmt.color=discord.Color.gold()
             fmt.set_author(name=str(author), icon_url=author.avatar_url)
-            fmt.set_footer(text='User')
+            fmt.set_footer(text='Usuario')
 
         embed = None
 
@@ -370,7 +370,6 @@ class Modmail(commands.Bot):
                 category=categ
                 )
             await channel.edit(topic=topic)
-            await channel.send('@here', embed=self.format_info(message))
 
     async def on_message(self, message):
         if message.author.bot:
