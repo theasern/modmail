@@ -109,7 +109,7 @@ class Modmail(commands.Bot):
     async def on_connect(self):
         print('---------------')
         print('Modmail connected!')
-        status = os.getenv('STATUS')
+        status = 'PM for Support'
         if status:
             print(f'Setting Status to {status}')
         else:
