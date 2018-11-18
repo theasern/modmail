@@ -126,6 +126,7 @@ class Modmail(commands.Bot):
     async def on_ready(self):
         '''Bot startup, sets uptime.'''
         self.guild = discord.utils.get(self.guilds, id=self.guild_id)
+        await self.change_presence(activity=discord.Game('PM for Support'))
         print(textwrap.dedent(f'''
         ---------------
         Client is ready!
