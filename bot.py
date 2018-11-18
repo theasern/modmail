@@ -109,7 +109,7 @@ class Modmail(commands.Bot):
     async def on_connect(self):
         print('---------------')
         print('Modmail connected!')
-        status = os.getenv('STATUS')
+        status = ''
         if status:
             print(f'Setting Status to {status}')
         else:
@@ -126,6 +126,7 @@ class Modmail(commands.Bot):
     async def on_ready(self):
         '''Bot startup, sets uptime.'''
         self.guild = discord.utils.get(self.guilds, id=self.guild_id)
+        await self.change_presence(activity=discord.Game('Respondiendo preguntas MD'))
         print(textwrap.dedent(f'''
         ---------------
         Client is ready!
